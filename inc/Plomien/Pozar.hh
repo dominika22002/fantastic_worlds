@@ -14,14 +14,15 @@ public:
     string nazwa() const { return "Pozar"; }
     string zestaw() const { return "Plomien"; }
     int punkty() const { return 40; }
-    float premia(vector<karta *> zestaw) const
+    float premia(vector<shared_ptr<karta> > zestaw) const
     {
         return 0;
     }
-    float kara(vector<karta *> zestaw) const
+    float kara(vector<shared_ptr<karta> > zestaw) const
     {
         return 0;
     }
+    virtual ~Pozar(){};
 };
 
 #endif

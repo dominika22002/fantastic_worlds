@@ -14,23 +14,33 @@ public:
     string nazwa() const { return "ElfiLucznicy"; }
     string zestaw() const { return "Armia"; }
     int punkty() const { return 10; }
-    float premia(vector<karta *> zestaw) const
-    {
-        float a,b=0;
-        karta *wsk = 0;
-        for (int i = 0; i < zestaw.size(); i++)
-        {  
-            wsk = zestaw[i];
-            a = zestaw[i]->punkty();
-            b = b+a;
-        }
-        cout << b << endl;
-        return b;
-    }
-    float kara(vector<karta *> zestaw) const
+    float premia(vector<shared_ptr<karta> > zestaw) const
     {
         return 0;
     }
+    float kara(vector<shared_ptr<karta> > zestaw) const
+    {
+        return 0;
+    }
+    virtual ~ElfiLucznicy(){};
 };
 
 #endif
+
+    // float premia(vector<shared_ptr<karta> > zestaw_s) const
+    // {
+    //     // float a,b=0;
+    //     // cout << "b1" << endl;
+    //     // shared_ptr<karta> wsk = nullptr;
+    //     // cout << "b2" << endl;
+    //     // for (int i = 0; i < zestaw_s.size(); i++)
+    //     // {  
+    //     //     cout << "b3" << endl;
+    //     //     wsk = zestaw_s[i];
+    //     //     a = zestaw_s[i]->punkty();
+    //     //     b = b+a;
+    //     // }
+    //     // cout << "b" << endl;
+    //     // cout << b << endl;
+    //     // return b;
+    // }

@@ -1,7 +1,7 @@
 #
 #  To sa opcje dla kompilacji
 #
-CXXFLAGS=-g -Iinc -Wall -pedantic -std=c++11
+CXXFLAGS=-g -Iinc -Wall -pedantic -std=c++17
 
 TRGDIR=/tmp/fantastyczneswiaty
 
@@ -9,7 +9,7 @@ __start__: ./fantastyczneswiaty
 	./fantastyczneswiaty
 
 ./fantastyczneswiaty: obj obj/main.o
-	g++ -Wall -pedantic -std=c++11 -o ./fantastyczneswiaty obj/main.o
+	g++ -Wall -pedantic -std=c++17 -o ./fantastyczneswiaty obj/main.o
 
 
 obj:
