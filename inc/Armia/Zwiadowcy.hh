@@ -11,12 +11,13 @@ using namespace std;
 class Zwiadowcy : public karta
 {
 public:
+    Zwiadowcy(){ set = "Armia"; }
     string nazwa() const { return "Zwiadowcy"; }
-    string zestaw() const { return "Armia"; }
     int punkty() const { return 5; }
     float premia(vector<shared_ptr<karta> > zestaw) const
     {
-        return 0;
+        delete_word("zestaw","Armia",zestaw);
+        return how_much_found("zestaw","Kraina",zestaw)*(10);
     }
     float kara(vector<shared_ptr<karta> > zestaw) const
     {

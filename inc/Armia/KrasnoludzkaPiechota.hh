@@ -11,8 +11,8 @@ using namespace std;
 class KrasnoludzkaPiechota : public karta
 {
 public:
+    KrasnoludzkaPiechota(){ slowo_kara.push_back("Armia"); set = "Armia";}
     string nazwa() const { return "KrasnoludzkaPiechota"; }
-    string zestaw() const { return "Armia"; }
     int punkty() const { return 15; }
     float premia(vector<shared_ptr<karta> > zestaw) const
     {
@@ -20,7 +20,12 @@ public:
     }
     float kara(vector<shared_ptr<karta> > zestaw) const
     {
-        return 0;
+        int a = 0;
+        for (int i = 0; i < slowo_kara.size(); i++)
+        {
+            a = how_much_found("zestaw",slowo_kara[i],zestaw)*(-2)+2;
+        }
+        return a;
     }
     virtual ~KrasnoludzkaPiechota(){};
 };

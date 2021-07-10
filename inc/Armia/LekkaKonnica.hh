@@ -11,8 +11,8 @@ using namespace std;
 class LekkaKonnica : public karta
 {
 public:
+    LekkaKonnica(){ slowo_kara.push_back("Kraina"); set = "Armia"; }
     string nazwa() const { return "LekkaKonnica"; }
-    string zestaw() const { return "Armia"; }
     int punkty() const { return 17; }
     float premia(vector<shared_ptr<karta> > zestaw) const
     {
@@ -20,7 +20,12 @@ public:
     }
     float kara(vector<shared_ptr<karta> > zestaw) const
     {
-        return 0;
+        int a = 0;
+        for (int i = 0; i < slowo_kara.size(); i++)
+        {
+            a = how_much_found("zestaw",slowo_kara[i],zestaw)*(-2);
+        }
+        return a;
     }
     virtual ~LekkaKonnica(){};
 };

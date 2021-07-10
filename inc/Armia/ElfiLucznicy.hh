@@ -11,12 +11,16 @@ using namespace std;
 class ElfiLucznicy : public karta
 {
 public:
+    ElfiLucznicy(){ set = "Armia"; }
     string nazwa() const { return "ElfiLucznicy"; }
-    string zestaw() const { return "Armia"; }
     int punkty() const { return 10; }
     float premia(vector<shared_ptr<karta> > zestaw) const
     {
-        return 0;
+        for (int i = 0; i < zestaw.size(); i++)
+        {
+            if(!found("zestaw","Pogoda",zestaw))
+                return 5;
+        }
     }
     float kara(vector<shared_ptr<karta> > zestaw) const
     {

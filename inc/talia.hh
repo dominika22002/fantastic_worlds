@@ -9,7 +9,7 @@
 
 using namespace std;
 
-vector<shared_ptr<karta>> taliameaker()
+static vector<shared_ptr<karta>> taliameaker()
 {
     vector<shared_ptr<karta> > talia;
     shared_ptr<karta> elfi_lucznicy = make_shared<ElfiLucznicy>();
