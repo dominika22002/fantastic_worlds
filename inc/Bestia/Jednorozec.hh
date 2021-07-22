@@ -11,14 +11,18 @@ using namespace std;
 class Jednorozec : public karta
 {
 public:
+    Jednorozec() { set = "Bestia"; }
     string nazwa() const { return "Jednorozec"; }
-    string zestaw() const { return "Bestia"; }
     int punkty() const { return 9; }
-    float premia(vector<shared_ptr<karta> > zestaw) const
+    float premia(Zestaw zestaw) const
     {
+        if (zestaw.found("nazwa", "Ksiezniczka"))
+            return 30;
+        if (zestaw.found("nazwa", "Cesarzowa") || zestaw.found("nazwa", "Krolowa") || zestaw.found("nazwa", "Zaklinaczka"))
+            return 15;
         return 0;
     }
-    float kara(vector<shared_ptr<karta> > zestaw) const
+    float kara(Zestaw zestaw) const
     {
         return 0;
     }

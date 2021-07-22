@@ -11,15 +11,22 @@ using namespace std;
 class Bazyliszek : public karta
 {
 public:
+    Bazyliszek()
+    {
+        slowo_kara.push_back("Armia");
+        slowo_kara.push_back("Przywodca");
+        slowo_kara.push_back("Bestia");
+        set = "Bestia";
+    }
     string nazwa() const { return "Bazyliszek"; }
-    string zestaw() const { return "Bestia"; }
     int punkty() const { return 35; }
-    float premia(vector<shared_ptr<karta> > zestaw) const
+    float premia(Zestaw zestaw) const
     {
         return 0;
     }
-    float kara(vector<shared_ptr<karta> > zestaw) const
+    float kara(Zestaw zestaw) const
     {
+        zestaw.inactive(slowo_kara);
         return 0;
     }
     virtual ~Bazyliszek(){};

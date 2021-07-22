@@ -134,22 +134,22 @@ void Zestaw::delete_penalty()
     }
 }
 
-// void Zestaw::delete_word_by_set(string kategoria, string element, string set)
-// {
-//     for (int i = 0; i < zestaw.size(); i++)
-//     {
-//         if (zestaw[i]->zestaw() == set)
-//         {
-//             for (int j = 0; j < zestaw[i]->slowo_kara.size(); j++)
-//             {
-//                 if (zestaw[i]->slowo_kara[j] == element)
-//                 {
-//                     zestaw[i]->slowo_kara.erase(zestaw[i]->slowo_kara.begin() + j);
-//                 }
-//             }
-//         }
-//     }
-// }
+void Zestaw::delete_word_by_set(string kategoria, string element, string set)
+{
+    for (int i = 0; i < zestaw.size(); i++)
+    {
+        if (zestaw[i]->zestaw() == set)
+        {
+            for (int j = 0; j < zestaw[i]->slowo_kara.size(); j++)
+            {
+                if (zestaw[i]->slowo_kara[j] == element)
+                {
+                    zestaw[i]->slowo_kara.erase(zestaw[i]->slowo_kara.begin() + j);
+                }
+            }
+        }
+    }
+}
 // // void Zestaw::delete_word_in_card(string kategoria, string element, shared_ptr<karta> karta)
 // // {
 // //     for (int j = 0; j < karta->slowo_kara.size(); j++)
@@ -280,72 +280,61 @@ void Zestaw::change_set()
     zestaw[wybor - 1]->set = sets[choice - 1];
 }
 
-// // void Zestaw::add_card()
-// // {
-// //     int wybor = 0, choice = 0;
-// //     vector<shared_ptr<karta>> nekro_set;
-// //     nekro_set = nekromanta_set(zestaw);
-// //     cout << "mozesz wybrac jedna wybrana karte z odrzuconych, sposrod Armii, Przywodcy, Czarodzieja lub bestii. wpisz numer karty." << endl;
-// //     cout << nekro_set;
-// //     cin >> wybor;
-// //     cout << "na jaki zestaw chcesz zmienic karte? wybierz zestaw karty" << endl;
-// //     string sets[11] = {"Armia", "Artefakt", "Bestia", "Bron", "Czarodziej", "KartaSpecjalna", "Kraina", "Plomien", "Pogoda", "Powodz", "Przywodca"};
-// //     for (int i = 0; i < 11; i++)
-// //     {
-// //         if (i < 9)
-// //             cout << i + 1 << "  - " << sets[i] << endl;
-// //         else
-// //             cout << i + 1 << " - " << sets[i] << endl;
-// //     }
-// //     cin >> choice;
-// //     zestaw[wybor - 1]->set = sets[choice - 1];
-// // }
-
-// void Zestaw::inactive(vector<string> set)
+// void Zestaw::add_card()
 // {
-//     for (int i = 0; i < zestaw.size(); i++)
+//     int wybor = 0, choice = 0;
+//     vector<shared_ptr<karta>> nekro_set;
+//     nekro_set = nekromanta_set(zestaw);
+//     cout << "mozesz wybrac jedna wybrana karte z odrzuconych, sposrod Armii, Przywodcy, Czarodzieja lub bestii. wpisz numer karty." << endl;
+//     cout << nekro_set;
+//     cin >> wybor;
+//     cout << "na jaki zestaw chcesz zmienic karte? wybierz zestaw karty" << endl;
+//     string sets[11] = {"Armia", "Artefakt", "Bestia", "Bron", "Czarodziej", "KartaSpecjalna", "Kraina", "Plomien", "Pogoda", "Powodz", "Przywodca"};
+//     for (int i = 0; i < 11; i++)
 //     {
-//         string name = zestaw[i]->nazwa();
-//         for (int i = 0; i < set.size(); i++)
-//         {
-//             if (name == set[i])
-//                 zestaw[i]->active = false;
-//         }
+//         if (i < 9)
+//             cout << i + 1 << "  - " << sets[i] << endl;
+//         else
+//             cout << i + 1 << " - " << sets[i] << endl;
 //     }
+//     cin >> choice;
+//     zestaw[wybor - 1]->set = sets[choice - 1];
 // }
 
-// void Zestaw::inactive_card(string element)
+void Zestaw::inactive(vector<string> set)
+{
+    for (int i = 0; i < zestaw.size(); i++)
+    {
+        string name = zestaw[i]->nazwa();
+        for (int i = 0; i < set.size(); i++)
+        {
+            if (name == set[i])
+                zestaw[i]->active = false;
+        }
+    }
+}
 
-// {
-//     for (int i = 0; i < zestaw.size(); i++)
-//     {
-//         if (zestaw[i]->nazwa() == element)
-//             zestaw[i]->active = false;
-//     }
-// }
+void Zestaw::inactive_card(string element)
 
-// int Zestaw::how_much_odd()
-// {
-//     int a = 0;
-//     for (int i = 0; i < zestaw.size(); i++)
-//     {
-//         if (zestaw[i]->punkty() % 2 != 0)
-//         {
-//             a++;
-//         }
-//     }
-//     return a - 1;
-// }
+{
+    for (int i = 0; i < zestaw.size(); i++)
+    {
+        if (zestaw[i]->nazwa() == element)
+            zestaw[i]->active = false;
+    }
+}
 
-    // // vector<string> slowo_kara;
-    // // string set;
-    // // bool active;
-    // // karta() { active = true; }
-    // virtual string nazwa() const = 0;
-    // // virtual string zestaw() { return set; }
-    // virtual int punkty() const = 0;
-    // virtual float premia(vector<shared_ptr<karta>> zestaw) const = 0;
-    // virtual float kara(vector<shared_ptr<karta>> zestaw) const = 0;
-    // virtual ~karta(){};
+int Zestaw::how_much_odd()
+{
+    int a = 0;
+    for (int i = 0; i < zestaw.size(); i++)
+    {
+        if (zestaw[i]->punkty() % 2 != 0)
+        {
+            a++;
+        }
+    }
+    return a - 1;
+}
 
 #endif

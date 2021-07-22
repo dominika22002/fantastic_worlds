@@ -11,16 +11,19 @@ using namespace std;
 class Smok : public karta
 {
 public:
+    Smok() { set = "Bestia"; }
     string nazwa() const { return "Smok"; }
-    string zestaw() const { return "Bestia"; }
     int punkty() const { return 30; }
-    float premia(vector<shared_ptr<karta> > zestaw) const
+    float premia(Zestaw zestaw) const
     {
         return 0;
     }
-    float kara(vector<shared_ptr<karta> > zestaw) const
+    float kara(Zestaw zestaw) const
     {
-        return 0;
+        if (!zestaw.found("zestaw", "Czarodziej"))
+            return -40;
+        else
+            return 0;
     }
     virtual ~Smok(){};
 };

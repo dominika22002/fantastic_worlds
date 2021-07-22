@@ -11,18 +11,20 @@ using namespace std;
 class Hydra : public karta
 {
 public:
+    Hydra() { set = "Bestia"; }
     string nazwa() const { return "Hydra"; }
-    string zestaw() const { return "Bestia"; }
     int punkty() const { return 12; }
-    float premia(vector<shared_ptr<karta> > zestaw) const
+    float premia(Zestaw zestaw) const
+    {
+        if (zestaw.found("nazwa", "Bagno"))
+            return 28;
+        else
+            return 0;
+    }
+    float kara(Zestaw zestaw) const
     {
         return 0;
     }
-    float kara(vector<shared_ptr<karta> > zestaw) const
-    {
-        return 0;
-    }
-    virtual ~Hydra(){};
 };
 
 #endif
