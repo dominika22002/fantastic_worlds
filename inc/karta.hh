@@ -6,7 +6,7 @@
 #include <math.h>
 #include <memory>
 #include <algorithm>
-// #include "zestaw.hh"
+// #include "talia.hh"
 
 using namespace std;
 class Zestaw;
@@ -46,6 +46,7 @@ public:
     void add_card();
     void inactive(vector<string> set);
     void inactive_card(string element);
+    void remove_elem(vector<shared_ptr<karta>> nekro_set);
     bool is_different();
     bool found(string kategoria, string element);
     shared_ptr<karta> &operator[](int i) { return zestaw[i]; }
@@ -81,7 +82,7 @@ void Zestaw::wyswietl()
 int pointcounter(Zestaw zestaw)
 {
     int a = 0;
-    return a = zestaw[1]->kara(zestaw);
+    return a = zestaw[1]->premia(zestaw);
 }
 
 bool Zestaw::found(string kategoria, string element)
@@ -280,27 +281,47 @@ void Zestaw::change_set()
     cin >> choice;
     zestaw[wybor - 1]->set = sets[choice - 1];
 }
-
-// void Zestaw::add_card()
-// {
-//     int wybor = 0, choice = 0;
-//     vector<shared_ptr<karta>> nekro_set;
-//     nekro_set = nekromanta_set(zestaw);
-//     cout << "mozesz wybrac jedna wybrana karte z odrzuconych, sposrod Armii, Przywodcy, Czarodzieja lub bestii. wpisz numer karty." << endl;
-//     cout << nekro_set;
-//     cin >> wybor;
-//     cout << "na jaki zestaw chcesz zmienic karte? wybierz zestaw karty" << endl;
-//     string sets[11] = {"Armia", "Artefakt", "Bestia", "Bron", "Czarodziej", "KartaSpecjalna", "Kraina", "Plomien", "Pogoda", "Powodz", "Przywodca"};
-//     for (int i = 0; i < 11; i++)
-//     {
-//         if (i < 9)
-//             cout << i + 1 << "  - " << sets[i] << endl;
-//         else
-//             cout << i + 1 << " - " << sets[i] << endl;
-//     }
-//     cin >> choice;
-//     zestaw[wybor - 1]->set = sets[choice - 1];
-// }
+void Zestaw::remove_elem(vector<shared_ptr<karta>> nekro_set)
+{
+    for (int i = 0; i < nekro_set.size(); i++)
+    {
+        if (!(nekro_set[i]->zestaw() == "Armia" || nekro_set[i]->zestaw() == "Przywodca" || nekro_set[i]->zestaw() == "Czarodziej" || nekro_set[i]->zestaw() == "Bestia"))
+        {
+            nekro_set.erase(nekro_set.begin() + i);
+        }
+        for (int j = 0; j < zestaw.size(); j++)
+        {
+            if (nekro_set[i]->nazwa() == zestaw[j]->nazwa())
+            {
+                nekro_set.erase(nekro_set.begin() + i);
+            }
+        }
+    }
+}
+void Zestaw::add_card()
+{
+    // int wybor = 0, choice = 0;
+    // vector<shared_ptr<karta>> nekro_set;
+    // for (int i = 0; i < talia.size(); i++)
+    // {
+    //     nekro_set.push_back(talia[i]);
+    // }
+    // remove_elem(nekro_set);
+    // cout << "mozesz wybrac jedna wybrana karte z odrzuconych, sposrod Armii, Przywodcy, Czarodzieja lub bestii. wpisz numer karty." << endl;
+    // cout << nekro_set;
+    // cin >> wybor;
+    // cout << "na jaki zestaw chcesz zmienic karte? wybierz zestaw karty" << endl;
+    // string sets[11] = {"Armia", "Artefakt", "Bestia", "Bron", "Czarodziej", "KartaSpecjalna", "Kraina", "Plomien", "Pogoda", "Powodz", "Przywodca"};
+    // for (int i = 0; i < 11; i++)
+    // {
+    //     if (i < 9)
+    //         cout << i + 1 << "  - " << sets[i] << endl;
+    //     else
+    //         cout << i + 1 << " - " << sets[i] << endl;
+    // }
+    // cin >> choice;
+    // zestaw[wybor - 1]->set = sets[choice - 1];
+}
 
 void Zestaw::inactive(vector<string> set)
 {

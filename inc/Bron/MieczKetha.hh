@@ -17,10 +17,14 @@ public:
     float premia(Zestaw zestaw) const
     {
         if (zestaw.found("zestaw", "Przywodca"))
+        {
             if (zestaw.found("karta", "TarczaKetha"))
+            {
                 return 40;
+            }
             else
                 return 10;
+        }
         return 0;
     }
     float kara(Zestaw zestaw) const
