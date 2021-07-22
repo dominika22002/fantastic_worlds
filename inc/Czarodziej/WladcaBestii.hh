@@ -11,8 +11,8 @@ using namespace std;
 class WladcaBestii : public karta
 {
 public:
+    WladcaBestii(){set = "Czarodziej";}
     string nazwa() const { return "WladcaBestii"; }
-    string zestaw() const { return "Czarodziej"; }
     int punkty() const { return 9; }
     float premia(vector<shared_ptr<karta> > zestaw) const
     {

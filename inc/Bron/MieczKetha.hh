@@ -11,14 +11,18 @@ using namespace std;
 class MieczKetha : public karta
 {
 public:
+    MieczKetha() { set = "Bron"; }
     string nazwa() const { return "MieczKetha"; }
-    string zestaw() const { return "Bron"; }
     int punkty() const { return 7; }
-    float premia(vector<shared_ptr<karta> > zestaw) const
+    float premia(vector<shared_ptr<karta>> zestaw) const
     {
-        return 0;
+        if (found("zestaw", "Przywodca", zestaw))
+            if (found("karta", "TarczaKetha", zestaw))
+                return 40;
+            else
+                return 10;
     }
-    float kara(vector<shared_ptr<karta> > zestaw) const
+    float kara(vector<shared_ptr<karta>> zestaw) const
     {
         return 0;
     }

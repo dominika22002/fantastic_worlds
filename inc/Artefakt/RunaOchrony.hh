@@ -11,14 +11,14 @@ using namespace std;
 class RunaOchrony : public karta
 {
 public:
-    RunaOchrony(){set = "Artefakt";}
+    RunaOchrony() { set = "Artefakt"; }
     string nazwa() const { return "RunaOchrony"; }
     int punkty() const { return 1; }
-    float premia(vector<shared_ptr<karta> > zestaw) const
+    float premia(vector<shared_ptr<karta>> zestaw) const
     {
         delete_penalty(zestaw);
     }
-    float kara(vector<shared_ptr<karta> > zestaw) const
+    float kara(vector<shared_ptr<karta>> zestaw) const
     {
         return 0;
     }

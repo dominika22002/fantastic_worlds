@@ -11,16 +11,21 @@ using namespace std;
 class Okret : public karta
 {
 public:
-    string nazwa() const { return "Okret"; }
-    string zestaw() const { return "Bron"; }
-    int punkty() const { return 23; }
-    float premia(vector<shared_ptr<karta> > zestaw) const
+    Okret()
     {
-        return 0;
+        slowo_kara.push_back("Powodz");
+        set = "Bron";
     }
-    float kara(vector<shared_ptr<karta> > zestaw) const
+    string nazwa() const { return "Okret"; }
+    int punkty() const { return 23; }
+    float premia(vector<shared_ptr<karta>> zestaw) const
     {
-        return 0;
+        delete_word_by_set("zestaw", "Armia", "Powodz", zestaw);
+    }
+    float kara(vector<shared_ptr<karta>> zestaw) const
+    {
+        if (!found("zestaw", "Powodz", zestaw))
+            inactive_card("Okret", zestaw);
     }
     virtual ~Okret(){};
 };

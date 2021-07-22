@@ -11,18 +11,18 @@ using namespace std;
 class Zaklinaczka : public karta
 {
 public:
-    string nazwa() const { return "Zaklinaczka"; }
-    string zestaw() const { return "Czarodziej"; }
-    int punkty() const { return 5; }
-    float premia(vector<shared_ptr<karta> > zestaw) const
-    {
-        return 0;
-    }
-    float kara(vector<shared_ptr<karta> > zestaw) const
-    {
-        return 0;
-    }
-    virtual ~Zaklinaczka(){};
+    // Zaklinaczka(){set = "Czarodziej";}
+    // string nazwa() const { return "Zaklinaczka"; }
+    // int punkty() const { return 5; }
+    // float premia(vector<shared_ptr<karta> > zestaw) const
+    // {
+    //     return 0;
+    // }
+    // float kara(vector<shared_ptr<karta> > zestaw) const
+    // {
+    //     return 0;
+    // }
+    // virtual ~Zaklinaczka(){};
 };
 
 #endif

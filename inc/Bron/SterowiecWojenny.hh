@@ -11,8 +11,8 @@ using namespace std;
 class SterowiecWojenny : public karta
 {
 public:
+    SterowiecWojenny(){set = "Bron";}
     string nazwa() const { return "SterowiecWojenny"; }
-    string zestaw() const { return "Bron"; }
     int punkty() const { return 35; }
     float premia(vector<shared_ptr<karta> > zestaw) const
     {
@@ -20,6 +20,10 @@ public:
     }
     float kara(vector<shared_ptr<karta> > zestaw) const
     {
+        if(!found("zestaw","Armia",zestaw))
+            inactive_card("SterowiecWojenny", zestaw);
+        if(found("zestaw","Pogoda",zestaw))
+            inactive_card("SterowiecWojenny", zestaw);
         return 0;
     }
     virtual ~SterowiecWojenny(){};

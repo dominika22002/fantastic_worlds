@@ -14,11 +14,10 @@ public:
     DrzewoSwiata() { set = "Artefakt"; }
     string nazwa() const { return "DrzewoSwiata"; }
     int punkty() const { return 2; }
-    float premia(vector<shared_ptr<karta> > zestaw) const
+    float premia(vector<shared_ptr<karta>> zestaw) const
     {
         if (is_different(zestaw))
             return 50;
-
         return 0;
     }
     float kara(vector<shared_ptr<karta>> zestaw) const
