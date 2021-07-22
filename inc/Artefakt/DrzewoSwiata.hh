@@ -11,14 +11,16 @@ using namespace std;
 class DrzewoSwiata : public karta
 {
 public:
+    DrzewoSwiata() { set = "Artefakt"; }
     string nazwa() const { return "DrzewoSwiata"; }
-    string zestaw() const { return "Artefakt"; }
     int punkty() const { return 2; }
-    float premia(vector<shared_ptr<karta> > zestaw) const
+    float premia(Zestaw zestaw) const
     {
+        if (zestaw.is_different())
+            return 50;
         return 0;
     }
-    float kara(vector<shared_ptr<karta> > zestaw) const
+    float kara(Zestaw zestaw) const
     {
         return 0;
     }

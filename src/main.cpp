@@ -9,28 +9,13 @@
 
 int main()
 {
-    int a;
     vector<shared_ptr<karta>> talia;
     talia = taliameaker();
     cout << talia;
-    auto zestaw = new Zestaw(talia);
-    
-    // zestaw->pointcounter();
-    zestaw->wyswietl();
-    cout << zestaw->pointcounter();
-
-    // for (int i = 0; i < zestaw.size(); i++)
-    // {
-    //     wsk2 = zestaw[i];
-    //     wsk = talia[i];
-    // cout << zestaw[i]->nazwa() << endl;
-    // cout << zestaw[i]->zestaw() << "\n";
-    // cout << zestaw[i]->punkty() << "\n" << endl;
-    // cout << talia[i]->nazwa() << endl;
-    // cout << talia[i]->zestaw() << "\n";
-    // cout << talia[i]->punkty() << "\n"
-    //      << endl;
-    // }
+    auto zestaw = Zestaw();
+    zestaw.create(talia);
+    zestaw.wyswietl();
+    cout << pointcounter(zestaw);
 
     return 0;
 }

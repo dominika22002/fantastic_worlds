@@ -11,16 +11,25 @@ using namespace std;
 class Rycerze : public karta
 {
 public:
+    Rycerze()
+    {
+        slowo_kara.push_back("Przywodca");
+        set = "Armia";
+    }
     string nazwa() const { return "Rycerze"; }
-    string zestaw() const { return "Armia"; }
     int punkty() const { return 20; }
-    float premia(vector<shared_ptr<karta> > zestaw) const
+    float premia(Zestaw zestaw) const
     {
         return 0;
     }
-    float kara(vector<shared_ptr<karta> > zestaw) const
+    float kara(Zestaw zestaw) const
     {
-        return 0;
+        for (int i = 0; i < slowo_kara.size(); i++)
+        {
+            if (zestaw.found("zestaw", slowo_kara[i]))
+                return 0;
+        }
+        return -8;
     }
     virtual ~Rycerze(){};
 };

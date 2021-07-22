@@ -11,17 +11,17 @@ using namespace std;
 class KlejnotPorzadku : public karta
 {
 public:
-    string nazwa() const { return "KlejnotPorzadku"; }
-    string zestaw() const { return "Artefakt"; }
-    int punkty() const { return 5; }
-    float premia(vector<shared_ptr<karta> > zestaw) const
-    {
-        return 0;
-    }
-    float kara(vector<shared_ptr<karta> > zestaw) const
-    {
-        return 0;
-    }
+    KlejnotPorzadku() { set = "Artefakt"; }
+     string nazwa() const { return "KlejnotPorzadku"; }
+     int punkty() const { return 5; }
+     float premia(Zestaw zestaw) const
+     {
+         return how_long_the_order(zestaw.sequence());
+     }
+     float kara(Zestaw zestaw) const
+     {
+         return 0;
+     }
     virtual ~KlejnotPorzadku(){};
 };
 
