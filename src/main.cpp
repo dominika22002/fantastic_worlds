@@ -14,13 +14,11 @@ int main()
     shared_ptr<karta> wsk = nullptr;
     vector<shared_ptr<karta>> zestaw;
     shared_ptr<karta> wsk2 = nullptr;
-    talia = taliameaker();
-    cout << talia;
-    zestaw = wybierz_zestaw(talia);
-    pointcounter(zestaw);
-    cout << zestaw;
-
-
+    // taliameaker(talia);
+    // cout << talia;
+    // zestaw = wybierz_zestaw(talia);
+    // pointcounter(zestaw);
+    // cout << zestaw;
 
     // for (int i = 0; i < zestaw.size(); i++)
     // {
