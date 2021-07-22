@@ -9,24 +9,46 @@
 
 using namespace std;
 
-vector<shared_ptr<karta>> wybierz_zestaw(vector<shared_ptr<karta>> talia)
+class Zestaw : public vector<shared_ptr<karta>>
 {
     vector<shared_ptr<karta>> zestaw;
-    cout << "podaj numery kart z zestawu" << endl;
-    int a=0;
-    for (int i = 0; i < 2; i++)
+
+public:
+    Zestaw(){}
+    Zestaw(vector<shared_ptr<karta>> talia)
     {
-       cin >> a;
-       zestaw.push_back(talia[a-1]);
+        cout << "podaj numery kart z zestawu" << endl;
+        int a = 0;
+        for (int i = 0; i < 2; i++)
+        {
+            cin >> a;
+            zestaw.push_back(talia[a - 1]);
+        }
     }
-    
-    return zestaw;
+    int pointcounter(); 
+    void wyswietl(); 
+    shared_ptr<karta>& operator[] (int i){return zestaw[i];}
+    shared_ptr<karta> operator[] (int i) const {return zestaw[i];}
+    ~Zestaw(){}
+};
+
+//wyswietla zestaw
+void Zestaw::wyswietl()
+{
+    for (int i = 0; i < zestaw.size(); i++)
+    {
+        if (i<9)
+            cout << i+1 <<"  - "<< zestaw[i]->nazwa() << endl;
+        else
+            cout << i+1 <<" - "<< zestaw[i]->nazwa() << endl;
+    }
 }
 
-void pointcounter(vector<shared_ptr<karta>> zestaw)
+//wylicza punkty
+int Zestaw::pointcounter()
 {
-    shared_ptr<karta> wsk = nullptr;
-    wsk = zestaw[0];
-    zestaw[0]->premia(zestaw); 
+    int a = 0;
+    return a = zestaw[0]->premia(zestaw);
 };
 #endif
+

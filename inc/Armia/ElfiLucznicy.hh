@@ -16,7 +16,7 @@ public:
     int punkty() const { return 10; }
     float premia(vector<shared_ptr<karta> > zestaw) const
     {
-        return 0;
+        return 2;
     }
     float kara(vector<shared_ptr<karta> > zestaw) const
     {
