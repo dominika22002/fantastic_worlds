@@ -11,14 +11,15 @@ using namespace std;
 class Nekromanta : public karta
 {
 public:
+    Nekromanta(){set = "Czarodziej";}
     string nazwa() const { return "Nekromanta"; }
-    string zestaw() const { return "Czarodziej"; }
     int punkty() const { return 3; }
-    float premia(vector<shared_ptr<karta> > zestaw) const
+    float premia(Zestaw zestaw) const
     {
+        zestaw.add_card();
         return 0;
     }
-    float kara(vector<shared_ptr<karta> > zestaw) const
+    float kara(Zestaw zestaw) const
     {
         return 0;
     }

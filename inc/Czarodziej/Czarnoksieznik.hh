@@ -11,16 +11,28 @@ using namespace std;
 class Czarnoksieznik : public karta
 {
 public:
+    Czarnoksieznik()
+    {
+        slowo_kara.push_back("Przywodca");
+        slowo_kara.push_back("Czarodziej");
+        set = "Czarodziej";
+    }
     string nazwa() const { return "Czarnoksieznik"; }
-    string zestaw() const { return "Czarodziej"; }
     int punkty() const { return 25; }
-    float premia(vector<shared_ptr<karta> > zestaw) const
+    float premia(Zestaw zestaw) const
     {
         return 0;
     }
-    float kara(vector<shared_ptr<karta> > zestaw) const
+    float kara(Zestaw zestaw) const
     {
-        return 0;
+        int a = 0, b = 0;
+        for (int i = 0; i < slowo_kara.size(); i++)
+        {
+            a = zestaw.how_much_found("zestaw", slowo_kara[i]);
+            b = b + a;
+        }
+        b = b - 1;
+        return b*(-10);
     }
     virtual ~Czarnoksieznik(){};
 };

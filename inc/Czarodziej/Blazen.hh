@@ -11,17 +11,24 @@ using namespace std;
 class Blazen : public karta
 {
 public:
+    Blazen(){set = "Czarodziej";}
     string nazwa() const { return "Blazen"; }
-    string zestaw() const { return "Czarodziej"; }
     int punkty() const { return 3; }
-    float premia(vector<shared_ptr<karta> > zestaw) const
+    float premia(Zestaw zestaw) const
     {
-        return 0;
+        int odd = zestaw.how_much_odd();
+        if (odd == zestaw.size()-1)
+        {
+            return 50;
+        }
+        else
+            return odd*3;
+
     }
-    float kara(vector<shared_ptr<karta> > zestaw) const
+    float kara(Zestaw zestaw) const
     {
-        return 0;
-    }
+    return 0;
+}
     virtual ~Blazen(){};
 };
 

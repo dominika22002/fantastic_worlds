@@ -50,6 +50,7 @@ public:
     bool found(string kategoria, string element);
     shared_ptr<karta> &operator[](int i) { return zestaw[i]; }
     shared_ptr<karta> operator[](int i) const { return zestaw[i]; }
+    size_t size(){return zestaw.size();}
     ~Zestaw() {}
 };
 
@@ -222,44 +223,44 @@ int how_long_the_order(int seq)
     }
 }
 
-// int Zestaw::collection()
-// {
-//     vector<string> sets;
-//     int a = 0, b = 0;
-//     for (int i = 0; i < zestaw.size(); i++)
-//     {
-//         sets.push_back(zestaw[i]->zestaw());
-//     }
+int Zestaw::collection()
+{
+    vector<string> sets;
+    int a = 0, b = 0;
+    for (int i = 0; i < zestaw.size(); i++)
+    {
+        sets.push_back(zestaw[i]->zestaw());
+    }
 
-//     sort(sets.begin(), sets.end());
-//     for (int i = 0; i < sets.size(); i++)
-//     {
-//         if (sets[i] == sets[i + 1])
-//         {
-//             a++;
-//         }
-//         else
-//             b = max(a, b);
-//         a = 0;
-//     }
-//     b = max(a, b);
-//     return b;
-// }
+    sort(sets.begin(), sets.end());
+    for (int i = 0; i < sets.size(); i++)
+    {
+        if (sets[i] == sets[i + 1])
+        {
+            a++;
+        }
+        else
+            b = max(a, b);
+        a = 0;
+    }
+    b = max(a, b);
+    return b;
+}
 
-// int how_long_the_collection(int seq)
-// {
-//     switch (seq)
-//     {
-//     case 3:
-//         return 10;
-//     case 4:
-//         return 40;
-//     case 5:
-//         return 100;
-//     default:
-//         return 0;
-//     }
-// }
+int how_long_the_collection(int seq)
+{
+    switch (seq)
+    {
+    case 3:
+        return 10;
+    case 4:
+        return 40;
+    case 5:
+        return 100;
+    default:
+        return 0;
+    }
+}
 
 void Zestaw::change_set()
 {

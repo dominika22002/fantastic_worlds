@@ -11,14 +11,14 @@ using namespace std;
 class Kolekcjoner : public karta
 {
 public:
+    Kolekcjoner(){set = "Czarodziej";}
     string nazwa() const { return "Kolekcjoner"; }
-    string zestaw() const { return "Czarodziej"; }
     int punkty() const { return 7; }
-    float premia(vector<shared_ptr<karta> > zestaw) const
+    float premia(Zestaw zestaw) const
     {
-        return 0;
+        return how_long_the_collection(zestaw.collection());
     }
-    float kara(vector<shared_ptr<karta> > zestaw) const
+    float kara(Zestaw zestaw) const
     {
         return 0;
     }
